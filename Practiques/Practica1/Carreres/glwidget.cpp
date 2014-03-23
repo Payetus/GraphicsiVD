@@ -131,8 +131,9 @@ void GLWidget::newTerra(float amplaria, float profunditat, float y)
 {
     // Metode que crea un objecte terra poligon amb el punt original a xorig, yorig, zorig
     // (quadrat d'una certa mida amb origen a xorig, yorig, zorig
-
-    // Metode a implementar
+    Terra *obj;
+    obj= new Terra();
+    newObjecte(obj);
 
  }
 
@@ -189,6 +190,10 @@ void GLWidget::paintGL()
 
     if (esc->cotxe!=NULL) {
         esc->cotxe->aplicaTGCentrat(transform);
+        esc->draw();
+    }
+    if (esc->terra!=NULL){
+        esc->terra->aplicaTGCentrat(transform);
         esc->draw();
     }
 }
