@@ -6,7 +6,7 @@ class Terra: public Objecte
 {
     void quad( int a, int b, int c, int d );
 public:
-    Terra();
+    Terra(float x,float z,float y);
     void make();
 };
 

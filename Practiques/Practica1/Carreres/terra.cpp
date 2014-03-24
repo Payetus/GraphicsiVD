@@ -1,10 +1,10 @@
 #include "terra.h"
 
-Terra::Terra():Objecte(6){
-    vertexs.push_back(point4(-0.5,0.0,-0.5,1.0));
-    vertexs.push_back(point4(0.5,0.0,-0.5,1.0));
-    vertexs.push_back(point4(0.5,0.0,0.5,1.0));
-    vertexs.push_back(point4(-0.5,0.0,0.5,1.0));
+Terra::Terra(float x,float z,float y):Objecte(6){
+    vertexs.push_back(point4(x/(-2.0),y,-z/2,1.0));
+    vertexs.push_back(point4(x/(2.0),y,-z/2,1.0));
+    vertexs.push_back(point4(x/(2.0),y,z/2,1.0));
+    vertexs.push_back(point4(x/(-2.0),y,z/2,1.0));
     std::cout<<"arriba creador de Terra"<<endl;
     make();
 }
