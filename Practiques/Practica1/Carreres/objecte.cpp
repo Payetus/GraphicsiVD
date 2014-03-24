@@ -1,5 +1,4 @@
 #include "objecte.h"
-#include "readfile.h"
 
 Objecte::Objecte(int npoints, QObject *parent) : numPoints(npoints) ,
     QObject(parent)
@@ -13,7 +12,6 @@ Objecte::Objecte(int npoints, QString n, GLdouble tamanio, GLdouble x0, GLdouble
     points = new point4[npoints];
     colors = new color4[npoints];
     tam = tamanio;
-    std::cout<<"Estic en el constructor parametritzat del cotxe\n";
     xorig = x0;
     yorig = y0;
     zorig = z0;
@@ -250,10 +248,6 @@ void Objecte::readObj(QString filename)
                 //int size = strlen(words[1])-1;
                 //while (size && (words[1][size]=='\n' || words[1][size]=='\r') ) words[1][size--]=0;
                 //currentMaterial = matlib.index(words[1]);
-            }
-            else if (!strcmp (first_word, "o")) {
-                //cada nou objecte s'actualitza aquest Ã­ndex
-                vindexUlt = vindexAct;
             }
             // fadded
             else {

@@ -10,6 +10,7 @@
 
 
 #include <QGLShaderProgram>
+#include "readfile.h"
 
 typedef Common::vec4  color4;
 typedef Common::vec4  point4;
@@ -22,8 +23,6 @@ class Objecte : public QObject
 protected:
     QString nom; // nom del fitxer on esta el cotxe
     vector<Cara> cares; // cares de l'objecte
-    vector<point4> vertexs; // vertexs de l'objecte sense repetits
-
     // Sistema de coordenades d'un objecte: punt origen i eixos de rotació
     GLfloat xorig, yorig, zorig;
     float xRot;
@@ -46,6 +45,8 @@ protected:
 
 public:
 
+
+    vector<point4> vertexs; // vertexs de l'objecte sense repetits
 
     float getYOrig();
     // Capsa mínima contenidora de l'objecte
@@ -79,7 +80,7 @@ public:
     // Aplica una TG centrada en el punt central de la capsa de l'objecte a un objecte
     void aplicaTGCentrat(mat4 m);
 
-private:
+protected:
     void construeix_cara ( char **words, int nwords, Objecte*objActual, int vindexUlt);
 
 };
