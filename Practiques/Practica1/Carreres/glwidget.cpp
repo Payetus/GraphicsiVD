@@ -268,18 +268,19 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
     switch ( event->key() )
     {
     case Qt::Key_Up:
-
+        esc->cotxe->forward();
         break;
     case Qt::Key_Down:
-
+        esc->cotxe->backward();
         break;
     case Qt::Key_Left:
-
+        esc->cotxe->turnleft();
         break;
     case Qt::Key_Right:
-
+        esc->cotxe->turnright();
         break;
     }
+    updateGL();
 
 }
 void GLWidget::keyReleaseEvent(QKeyEvent *event)

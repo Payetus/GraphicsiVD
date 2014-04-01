@@ -40,21 +40,28 @@ Cotxe::Cotxe(QString n, GLfloat tamanio, GLfloat x0, GLfloat y0, GLfloat z0,
 
 void Cotxe::forward(){
     // Metode a implementar per fer el moviment del cotxe
+    cout<< "Ens estem mogent cap endevant"<<endl;
+    aplicaTGCentrat(Translate(-0.005,0.0,0.0));
 }
 
 void Cotxe::backward(){
     // Metode a implementar per fer el moviment del cotxe
+    cout<< "Ens estem mogent cap enrera"<<endl;
+    aplicaTGCentrat(Translate(0.005,0.0,0.0));
 
 }
 
 void Cotxe::turnleft(){
     // Metode a implementar per fer el moviment del cotxe
-
+    cout<< "Ens estem mogent cap endevant"<<endl;
+    aplicaTGCentrat(RotateY(45));
+   // aplicaTGCentrat(Translate(-0.025,0.0,0.0));
 }
 
 void Cotxe::turnright(){
     // Metode a implementar per fer el moviment del cotxe
-
+    cout<< "Ens estem mogent cap endevant"<<endl;
+    aplicaTGCentrat(RotateY(-45));
 }
 void Cotxe::readObj(QString filename)
 {

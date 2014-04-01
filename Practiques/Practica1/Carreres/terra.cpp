@@ -11,9 +11,9 @@ Terra::Terra(float x,float z,float y):Objecte(6){
 void Terra::quad( int a, int b, int c, int d )
 {
     static vec3  base_colors[] = {
-        vec3( 1.0, 0.0, 0.0 ),
         vec3( 0.0, 1.0, 0.0 ),
-        vec3( 0.0, 0.0, 1.0 ),
+        vec3( 0.0, 1.0, 0.0 ),
+        vec3( 0.0, 1.0, 0.0 ),
         vec3( 1.0, 1.0, 0.0 )
     };
     colors[Index] = base_colors[a]; points[Index] = vertexs[a]; Index++;
