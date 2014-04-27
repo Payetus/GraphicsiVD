@@ -5,6 +5,7 @@ Objecte::Objecte(int npoints, QObject *parent) : numPoints(npoints) ,
 {
     points = new point4[npoints];
     colors = new color4[npoints];
+
 }
 
 Objecte::Objecte(int npoints, QString n, GLdouble tamanio, GLdouble x0, GLdouble y0, GLdouble z0, double girx, double giry, double girz) : numPoints(npoints)
@@ -42,26 +43,27 @@ Capsa3D Objecte::calculCapsa3D()
 {
 
     // Metode a implementar: calcula la capsa mínima contenidora d'un objecte
-    int xmin = 0, ymin = 0, zmin = 0, xmax =0, ymax = 0, zmax = 0;
+    float xmin = 300, ymin = 300, zmin = 300, xmax =-300, ymax = -300, zmax = -300;
     for ( int i = 0; i < this->numPoints; ++i )
     {
-        if (xmin <= points[i][0]){
-            xmin = points[i][0];
+
+        if (xmin >= this->points[i].x){
+            xmin = points[i].x;
         }
-        if (ymin <= points[i][1]){
-            ymin = points[i][1];
+        if (ymin >= points[i].y){
+            ymin = points[i].y;
         }
-        if (zmin <= points[i][2]){
-            zmin = points[i][2];
+        if (zmin >= points[i].z){
+            zmin = points[i].z;
         }
-        if (xmax <= points[i][0]){
-            xmax = points[i][0];
+        if (xmax <= points[i].x){
+            xmax = points[i].x;
         }
-        if (ymax <= points[i][1]){
-            ymax = points[i][1];
+        if (ymax <= points[i].y){
+            ymax = points[i].y;
         }
-        if (zmax <= points[i][2]){
-            zmax = points[i][2];
+        if (zmax <= points[i].z){
+            zmax = points[i].z;
         }
     }
     vec3    pmin, pmax;
@@ -111,9 +113,15 @@ void Objecte::aplicaTGCentrat(mat4 m)
 {
 
     // Metode a modificar
-    //aplicaTGPoints(m);
+    this->capsa=this->calculCapsa3D();
+    point4 pmig = capsa.pmin;
+    pmig[0]+=capsa.a/2.0;
+    pmig[1]+=capsa.h/2.0;
+    pmig[2]+=capsa.p/2.0;
 
+    aplicaTG(Translate(-pmig[0],-pmig[1],-pmig[2]));
     aplicaTG(m);
+    aplicaTGPoints(Translate(pmig[0],pmig[1],pmig[2]));
 
 }
 

@@ -40,8 +40,6 @@ Cotxe::Cotxe(QString n, GLfloat tamanio, GLfloat x0, GLfloat y0, GLfloat z0,
     carrosseria= new Carrosseria(NumVerticesF);
     double escalaX = 1.0 / 4.6;
     mat4 m= Translate(-1.93*escalaX, (+0.26)*escalaX, -2.16*escalaX)*Scale(escalaX, escalaX, escalaX)*Translate(+1.93, -0.26, 2.16);
-
-
     aplicaTG(m);
 
 }
