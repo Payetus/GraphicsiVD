@@ -30,9 +30,17 @@ Cotxe::Cotxe(QString n, GLfloat tamanio, GLfloat x0, GLfloat y0, GLfloat z0,
     // El seguent codi escala el cotxe entre 0 i 1 i el situa el seu centre  0,0,0. aixo fa que es vegi en la primera visualització
     //
     // Cal modificar el codi seguent
+
+    this->direction[0] = xdir;
+    this->direction[1] = ydir;
+    this->direction[2] = zdir;
+    this->direction[3] = 0;
+
+
     carrosseria= new Carrosseria(NumVerticesF);
     double escalaX = 1.0 / 4.6;
     mat4 m= Translate(-1.93*escalaX, (+0.26)*escalaX, -2.16*escalaX)*Scale(escalaX, escalaX, escalaX)*Translate(+1.93, -0.26, 2.16);
+
 
     aplicaTG(m);
 
@@ -54,14 +62,19 @@ void Cotxe::backward(){
 void Cotxe::turnleft(){
     // Metode a implementar per fer el moviment del cotxe
     cout<< "Ens estem mogent cap endevant"<<endl;
-    aplicaTGCentrat(RotateY(45));
-   // aplicaTGCentrat(Translate(-0.025,0.0,0.0));
+
+    this->direction= RotateY(this->rotation)*this->direction;
+
+    aplicaTGCentrat(RotateY(this->rotation));
 }
+
 
 void Cotxe::turnright(){
     // Metode a implementar per fer el moviment del cotxe
     cout<< "Ens estem mogent cap endevant"<<endl;
-    aplicaTGCentrat(RotateY(-45));
+    this->direction= RotateY(- this->rotation)*this->direction;
+
+    aplicaTGCentrat(RotateY(- this->rotation));
 }
 void Cotxe::readObj(QString filename)
 {

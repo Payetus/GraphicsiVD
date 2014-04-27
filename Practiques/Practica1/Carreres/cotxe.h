@@ -27,7 +27,7 @@ public:
     point4 direction;
 
 private:
-
+    static const int rotation=45;
     static const int NumVerticesF = 100000;
     static const int NumCares = 300000;
 
