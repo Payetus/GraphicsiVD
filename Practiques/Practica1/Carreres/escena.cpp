@@ -31,7 +31,32 @@ void escena::addObjecte(Objecte *obj) {
 
 void escena::CapsaMinCont3DEscena()
 {
-    // Metode a implementar
+
+    //Calcular min entre minims i max entre max (ara nomes un cotxe i un terra)
+
+    for (int i =0; i<3;i++){
+        if (this->cotxe->capsa.pmin[i]<this->terra->capsa.pmin[i]){
+            this->capsaMinima.pmin[i] = this->cotxe->capsa.pmin[i];
+        }else{
+             this->capsaMinima.pmin[i] = this->terra->capsa.pmin[i];
+        }
+    }
+    if (this->cotxe->capsa.pmin[0] + cotxe->capsa.a < this->terra->capsa.pmin[0] + cotxe->capsa.a){
+        this->capsaMinima.a = this->cotxe->capsa.pmin[0] - this->cotxe->capsa.a;
+    }else{
+        this->capsaMinima.a = this->terra->capsa.pmin[0] - this->terra->capsa.a;
+    }
+    if (this->cotxe->capsa.pmin[0] + cotxe->capsa.p < this->terra->capsa.pmin[0] + cotxe->capsa.p){
+        this->capsaMinima.p = this->cotxe->capsa.pmin[0] - this->cotxe->capsa.p;
+    }else{
+        this->capsaMinima.p = this->terra->capsa.pmin[0] - this->terra->capsa.p;
+    }
+    if (this->cotxe->capsa.pmin[0] + cotxe->capsa.h < this->terra->capsa.pmin[0] + cotxe->capsa.h){
+        this->capsaMinima.h = this->cotxe->capsa.pmin[0] - this->cotxe->capsa.h;
+    }else{
+        this->capsaMinima.h = this->terra->capsa.pmin[0] - this->terra->capsa.h;
+    }
+
 }
 
 void escena::aplicaTG(mat4 m) {

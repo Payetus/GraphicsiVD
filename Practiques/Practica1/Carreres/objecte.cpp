@@ -42,9 +42,35 @@ Capsa3D Objecte::calculCapsa3D()
 {
 
     // Metode a implementar: calcula la capsa mínima contenidora d'un objecte
-
+    int xmin = 0, ymin = 0, zmin = 0, xmax =0, ymax = 0, zmax = 0;
+    for ( int i = 0; i < this->numPoints; ++i )
+    {
+        if (xmin <= points[i][0]){
+            xmin = points[i][0];
+        }
+        if (ymin <= points[i][1]){
+            ymin = points[i][1];
+        }
+        if (zmin <= points[i][2]){
+            zmin = points[i][2];
+        }
+        if (xmax <= points[i][0]){
+            xmax = points[i][0];
+        }
+        if (ymax <= points[i][1]){
+            ymax = points[i][1];
+        }
+        if (zmax <= points[i][2]){
+            zmax = points[i][2];
+        }
+    }
     vec3    pmin, pmax;
-
+    pmin = vec3(xmin,ymin,zmin);
+    pmax = vec3(xmax, ymax,zmax);
+    capsa.pmin = pmin;
+    capsa.a = fabs(pmin[0]-pmax[0]);
+    capsa.h = fabs(pmin[1]-pmax[1]);
+    capsa.p = fabs(pmin[2]-pmax[2]);
     return capsa;
 }
 
@@ -85,8 +111,10 @@ void Objecte::aplicaTGCentrat(mat4 m)
 {
 
     // Metode a modificar
-    aplicaTGPoints(m);
+    //aplicaTGPoints(m);
+
     aplicaTG(m);
+
 }
 
 void Objecte::toGPU(QGLShaderProgram *pr){
