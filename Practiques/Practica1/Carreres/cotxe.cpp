@@ -47,13 +47,16 @@ Cotxe::Cotxe(QString n, GLfloat tamanio, GLfloat x0, GLfloat y0, GLfloat z0,
 void Cotxe::forward(){
     // Metode a implementar per fer el moviment del cotxe
     cout<< "Ens estem mogent cap endevant"<<endl;
-    aplicaTGCentrat(Translate(-0.005,0.0,0.0));
+    this->capsa=this->calculCapsa3D();
+    aplicaTGCentrat(Translate(0.005*direction[0],0.005*direction[1],0.005*direction[2]));
+    this->capsa=this->calculCapsa3D();
 }
 
 void Cotxe::backward(){
     // Metode a implementar per fer el moviment del cotxe
     cout<< "Ens estem mogent cap enrera"<<endl;
-    aplicaTGCentrat(Translate(0.005,0.0,0.0));
+    aplicaTGCentrat(Translate(-0.005*direction[0],-0.005*direction[1],-0.005*direction[2]));
+
 
 }
 
